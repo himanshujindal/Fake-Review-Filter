@@ -1,0 +1,16 @@
+ABOUT
+# This folder contains the implementation of the paper Review Graph based Online Store Review Spammer Detection
+# The python source files are present in this folder and have been implemented to work on Yelp's academic dataset. However, they can work on any dataset by replacing yelpData.py with another parser
+SOURCE FILES
+createYelpSubset.py creates a subset of the Yelp Data. This is good for developing the algorithm for a small subset
+graphClasses.py implements the various nodes of the graph. Defines constructors and the functions to calculate honesty, reliability and trustiness
+graphFunc.py implements the wrapper for the classes, so that the member functions to compute the honesty, reliability and trustiness can be called without using any class objects
+review_graph.py implements the actual program that first creates the maps for the classes and then calls the functions to compute the honesty, reliability and trustiness
+
+FLOW OF THE PROGRAM
+review_graph.py
+		-> yelpData.py
+				-> uses graphClasses.py to create maps of nodes representing the whole data
+		-> graphFunc.py
+				-> calls the functions to compute honesty, reliability and trustiness
+		-> outputs the values of the nodes to csv files
