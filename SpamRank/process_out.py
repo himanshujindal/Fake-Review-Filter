@@ -4,11 +4,10 @@ f = open('out', 'r')
 for line in f:
     if 'ITERATION' not in line:
         a = line.split(',')
-        print a
         res_map.setdefault(a[0], [])
         res_map[a[0]].append(float(a[1]))
 f.close()
-f = open('out.csv', 'w')
+f = open('out_new.csv', 'w')
 try:
     writer = csv.writer(f)
     writer.writerow(['Review_id', 'Iteration 1', 'Iteration 2', 'Iteration 3', 'Iteration 4'])

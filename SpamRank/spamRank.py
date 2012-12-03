@@ -19,6 +19,7 @@ import matplotlib.pyplot as plt
 #   reviewer_map - A dictionaryof reviewer_id to set containing reviews from
 #                   same reviewers
 YELP_DATASET = "/Users/himanshujindal/Documents/Stony Brook/3rd Sem/Data Mining/Yelp Data/yelp_academic_dataset.json"
+# YELP_DATASET = "/Users/himanshujindal/Documents/Stony Brook/3rd Sem/Data Mining/Yelp Data/yelp_subset.json"
 SPAM_DATA = "/Users/himanshujindal/Documents/Stony Brook/3rd Sem/Data Mining/op_spam_v1.3/MTurk"
 NONSPAM_DATA = "/Users/himanshujindal/Documents/Stony Brook/3rd Sem/Data Mining/op_spam_v1.3/TripAdvisor"
 # Take as input
@@ -72,10 +73,8 @@ class review:
     def getrank(self):
         self.temp = 0
         for review in self.connections:
-            self.temp+= (review.spamrank*self.connections[review])
-        if self.connections:
-            self.temp /= len(self.connections)
-        else:
+            self.temp+= (review.spamrank*self.connections[review]/len(review.connections))
+        if not self.connections:
             self.temp = self.spamrank
     def swaptemp(self):
         self.spamrank = self.temp
